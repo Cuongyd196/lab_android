@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">app02</string>
+    <string-array name="department_array">
+        <item>Khoa CNTT-TT</item>
+        <item>Khoa KTCN</item>
+        <!-- Add more departments as needed -->
+    </string-array>
+</resources>
