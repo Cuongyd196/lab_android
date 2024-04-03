@@ -18,6 +18,7 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
+
     <EditText
         android:id="@+id/editTextFullName"
         android:layout_width="match_parent"
@@ -72,6 +73,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp" />
+    <TextView
+        android:id="@+id/textViewlanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Khả năng lập trình"  />
+    <CheckBox
+        android:id="@+id/checkboxC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="C"
+        android:checked="false" />
+    <CheckBox
+        android:id="@+id/checkboxJs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="JavaScript"
+        android:checked="false" />
+    <CheckBox
+        android:id="@+id/checkboxCSharp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="C#"
+        android:checked="false" />
 
     <Button
         android:layout_gravity="center_horizontal"

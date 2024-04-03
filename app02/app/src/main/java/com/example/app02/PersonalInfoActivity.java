@@ -1,11 +1,14 @@
 package com.example.app02;
-
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -32,6 +35,8 @@ public class PersonalInfoActivity extends AppCompatActivity {
     private Button buttonBack;
     private Spinner spinnerDepartment;
     private String selectedDepartment;
+    private CheckBox checkboxC, checkboxJs, checkboxCSharp;
+    public String messageCheckbox = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +60,11 @@ public class PersonalInfoActivity extends AppCompatActivity {
         buttonBack = findViewById(R.id.buttonBack);
         spinnerDepartment = findViewById(R.id.spinnerDepartment);
         textViewResult = findViewById(R.id.textViewResult);
+        checkboxC = findViewById(R.id.checkboxC);
+        checkboxJs = findViewById(R.id.checkboxJs);
+        checkboxCSharp = findViewById(R.id.checkboxCSharp);
 
         String[] departments = { "CNTT-TT", "KTCN" };
-
-
         // Create the instance of ArrayAdapter
         // having the list of departments
         ArrayAdapter adapter  = new ArrayAdapter(this, android.R.layout.simple_spinner_item, departments);
@@ -67,6 +73,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
         // Apply the adapter to the spinner
         spinnerDepartment.setAdapter(adapter);
 
+        //
         spinnerDepartment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -81,6 +88,19 @@ public class PersonalInfoActivity extends AppCompatActivity {
             }
         });
 
+        // Thiết lập lắng nghe sự kiện thay đổi trạng thái của CheckBox
+        CompoundButton.OnCheckedChangeListener checkBoxListener = new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                        messageCheckbox += buttonView.getText().toString() + " ,";
+                }
+            }
+        };
+        // Thiết lập lắng nghe sự kiện cho mỗi CheckBox
+        checkboxC.setOnCheckedChangeListener(checkBoxListener);
+        checkboxJs.setOnCheckedChangeListener(checkBoxListener);
+        checkboxCSharp.setOnCheckedChangeListener(checkBoxListener);
         // Set click listener for display button
         buttonDisplay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,9 +117,27 @@ public class PersonalInfoActivity extends AppCompatActivity {
                         + "Ngày sinh: " + dateOfBirth + "\n"
                         + "Giới tính: " + gender + "\n"
                         + "Là sinh viên: " + (isStudent ? "Có" : "Không") + "\n"
-                        + "Khoa: " + selectedDepartment;
-                textViewResult.setText(result);
+                        + "Khoa: " + selectedDepartment + "\n"
+                        + "Khả năng lập trình: " + messageCheckbox;
+                //textViewResult.setText(result);
                 //Toast.makeText(PersonalInfoActivity.this, result, Toast.LENGTH_LONG).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(PersonalInfoActivity.this);
+                builder.setTitle("Thông báo");
+                builder.setMessage(result);
+                builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Xử lý khi người dùng bấm nút Đồng ý
+                        dialog.cancel(); // Đóng AlertDialog
+                    }
+                });
+                builder.setNegativeButton("Hủy bỏ", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Xử lý khi người dùng bấm nút Hủy bỏ
+                        dialog.cancel(); // Đóng AlertDialog
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 

@@ -14,6 +14,9 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
     private Button buttonCalculate;
     private Button buttonPersonalInfo;
+    private Button buttonListViewBasic;
+    private Button buttonListViewAdvanced;
+    private Button buttonImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialize views
         buttonCalculate = findViewById(R.id.buttonCalculate);
         buttonPersonalInfo = findViewById(R.id.buttonPersonalInfo);
+        buttonListViewBasic = findViewById(R.id.buttonListViewBasic);
 
 
         // Set click listener for  button
@@ -47,6 +51,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Start MainActivity
                 Intent intent = new Intent(MainActivity.this, PersonalInfoActivity.class);
+                startActivity(intent);
+                finish(); // Close MainActivity
+            }
+        });
+
+        buttonListViewBasic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start MainActivity
+                Intent intent = new Intent(MainActivity.this, ListviewBasicActivity.class);
                 startActivity(intent);
                 finish(); // Close MainActivity
             }

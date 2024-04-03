@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">app02</string>
+    <string name="app_name">App tiện ích</string>
     <string-array name="department_array">
         <item>Khoa CNTT-TT</item>
         <item>Khoa KTCN</item>

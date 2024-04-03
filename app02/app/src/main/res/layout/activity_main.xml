@@ -38,4 +38,34 @@
         android:background="@color/my_light_primary"
         android:textColor="@android:color/white" />
 
+    <Button
+        android:id="@+id/buttonListViewBasic"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="Listview cơ bản"
+        android:background="@color/my_light_primary"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/buttonListViewAdvanced"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="Listview nâng cao"
+        android:background="@color/my_light_primary"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/buttonImage"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="Hình ảnh"
+        android:background="@color/my_light_primary"
+        android:textColor="@android:color/white" />
+
 </LinearLayout>
